@@ -16,12 +16,12 @@ function sacarPromedio(e) {
     let promedio = (parseFloat(nota1.value) + parseFloat(nota2.value) + parseFloat(nota3.value))/3;
     let obs;
 
+    // condicion por si no se rellena las inputs
     if(nombre.value === ""){
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong!',
-            footer: '<a href="">Why do I have this issue?</a>'
+            text: 'Te falto rellenar el nombre del alumno'
           })
     }if(nota1 === ""||nota2=== ""|| nota3 === "") {
         Swal.fire({
@@ -31,17 +31,17 @@ function sacarPromedio(e) {
           })
     }
 
+    // Condicion por si pasa o no
     if(promedio > 6 && promedio <= 10) {
         obs =value= "Aprobado &#x2714"; 
     }else {
         obs =value= "Desaprobado &#x274c";
     }
 
-
-//    console.log(obs)
     agregartabla(promedio, obs);
  }
 
+//  Se agrega en el html
 function agregartabla(promedio, obs) {
     tabla.innerHTML = `
     <td>${nombre.value}</td>

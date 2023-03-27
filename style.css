@@ -2,3 +2,23 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    gap: 10px 20px;
+    row-gap: 10px;
+}
+
+.btn-col {
+    display: flex;
+    align-content: center;
+}
+
+.btn-send {
+    background-color: aquamarine;
+    border: 0px;
+    border-radius: 5px;
+}
