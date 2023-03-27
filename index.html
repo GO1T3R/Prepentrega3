@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+
+  <title>Control de Calificaciones</title>
+</head>
+
+<form>
+
+  <body>
+    <div class="nombre">
+      <label for="name">Nombre del alumno</label>
+      <input type="text" id="name">
+    </div>
+
+    <div class="nota-col1">
+      <label for="nota1">nota 1</label>
+      <input type="number" name="nota1" id="nota1">
+    </div>
+
+    <div class="nota-col2">
+      <label for="nota2">nota 2</label>
+      <input type="number" name="nota2" id="nota2">
+    </div>
+
+    <div class="nota-col3">
+      <label for="nota3">nota 3</label>
+      <input type="number" name="nota3" id="nota3">
+    </div>
+
+    <div class="btn-col">
+      <button class="btn-send">Promediar</button>
+    </div>
+</form>
+<table>
+  <thead>
+   <tr>
+    <td>Nombre</td>
+    <td>Nota 1</td>
+    <td>Nota 2</td>
+    <td>Nota 3</td>
+    <td>Promedio</td>
+    <td>Observación</td>
+   </tr>
+  </thead>
+  <tbody id="addtabla">
+
+  </tbody>
+
+</table>
+<p>La nota final es: <span id="notaFinal"></span></p>
+<script src="./script.js"></script>
+</body>
+
+</html>
