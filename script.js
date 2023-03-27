@@ -62,8 +62,7 @@ function leerNotas() {
 
 // Agrega los datos ingresado en tabla HTML
 function agregartabla(promedio, obs) {
-    limpiarHTML();
-
+    
     infoAlumno.forEach(notas => {
         const row = document.createElement('tr')
         row.innerHTML = `
@@ -74,19 +73,18 @@ function agregartabla(promedio, obs) {
         <td>${promedio.toFixed(1)}</td>
         <td>${obs}</td>
         `;
-
+        
         // Agregar al html a tbody
         tabla.appendChild(row);
     })
-
+    
+    limpiarHTML();
 
 }
 
 
 //Limpiar el HTML para evitar que se repitan los objectos 
 function limpiarHTML() {
-    while(tabla.firstChild) {
-        tabla.removeChild(tabla.firstChild);
-    }
+   infoAlumno.shift();
 }
 
