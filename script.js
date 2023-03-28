@@ -6,7 +6,8 @@ const boton = document.querySelector('.btn-send');
 const tabla = document.getElementById('addtabla');
 
 let infoAlumno = [];
-
+let promedio;
+let obs;
 
 cargarEventListener();
 // Cargar EventListener
@@ -16,56 +17,58 @@ function cargarEventListener() {
 
 function sacarPromedio(e) {
     e.preventDefault();
-    let promedio = (parseFloat(nota1.value) + parseFloat(nota2.value) + parseFloat(nota3.value))/3;
-    let obs;
+    promedio = (parseFloat(nota1.value) + parseFloat(nota2.value) + parseFloat(nota3.value)) / 3;
+
+    // let obs = ""
 
     // Condicion si se rellena los inputs
-    if(nombre.value === ""){
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Te falto agregar el nombre'
-          })
-    }if(nota1 === ""||nota2=== ""|| nota3 === "") {
+    if (nota1.value === "" || nota2.value === "" || nota3.value === "") {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Te falto llenar una nota!'
-          })
+        })
+    }
+    if (nombre.value === "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Te falto agregar el nombre'
+        })
     }
 
     // condicion si el alumno pasa o no
-    if(promedio >= 7 && promedio <= 10) {
-        obs =value= "Aprobado &#x2714"; 
-    }else {
-        obs =value= "Desaprobado &#x274c";
+    if (promedio >= 7 && promedio <= 10) {
+        obs = value = "Aprobado &#x2714";
+
+    } else {
+        obs = value = "Desaprobado &#x274c";
+
     }
-    leerNotas();
-    agregartabla(promedio, obs);
+    leerNotas(obs);
+
 }
 
-function leerNotas() {
-     
+function leerNotas(obs) {
+
     let infoNotas = {
         Alumno: nombre.value,
         CalificacionUno: nota1.value,
         CalificacionDos: nota2.value,
         CalificacionTres: nota2.value,
-    }
+    };
 
     infoAlumno = [...infoAlumno, infoNotas];
 
-    console.log(infoAlumno);
-
-   
+    guardarLocal(infoAlumno);
+    agregartabla(infoAlumno, obs)
 }
 
 // Agrega los datos ingresado en tabla HTML
-function agregartabla(promedio, obs) {
-    
-    infoAlumno.forEach(notas => {
-        const row = document.createElement('tr')
-        row.innerHTML = `
+function agregartabla(infoAlumno, obs) {
+
+    const row = document.createElement('tr')
+    row.innerHTML = `
         <td>${nombre.value}</td>
         <td>${nota1.value}</td>
         <td>${nota2.value}</td>
@@ -73,18 +76,14 @@ function agregartabla(promedio, obs) {
         <td>${promedio.toFixed(1)}</td>
         <td>${obs}</td>
         `;
-        
-        // Agregar al html a tbody
-        tabla.appendChild(row);
-    })
-    
-    limpiarHTML();
 
+    // Agregar al html a tbody
+    tabla.appendChild(row);
 }
 
-
-//Limpiar el HTML para evitar que se repitan los objectos 
-function limpiarHTML() {
-   infoAlumno.shift();
+// Guardar localStorage
+function guardarLocal(infoAlumno) {
+    localStorage.setItem("list", JSON.stringify(infoAlumno));
+    infoAlumno = JSON.parse(localStorage.getItem("list"));
 }
 
