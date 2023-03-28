@@ -79,6 +79,8 @@ function agregartabla(infoAlumno, obs) {
 
     // Agregar al html a tbody
     tabla.appendChild(row);
+
+    // GuardarHTML
 }
 
 // Guardar localStorage
@@ -86,4 +88,6 @@ function guardarLocal(infoAlumno) {
     localStorage.setItem("list", JSON.stringify(infoAlumno));
     infoAlumno = JSON.parse(localStorage.getItem("list"));
 }
+
+
 
